@@ -1,0 +1,24 @@
+/* styles.css */
+.icon-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .default-icon {
+    display: block;
+  }
+  
+  .hover-icon {
+    display: none;
+    position: absolute;
+  }
+  
+  .icon-button:hover .default-icon {
+    display: none;
+  }
+  
+  .icon-button:hover .hover-icon {
+    display: block;
+  }
