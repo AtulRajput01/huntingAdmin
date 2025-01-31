@@ -58,6 +58,8 @@ const AnimalManagement = () => {
     const handleView = async (animal) => {
         try {
             const response = await axios.get(`http://localhost:3002/api/animals/getSpecie/${animal._id}`);
+            console.log(response.data.data);
+            
             setSpecies(response.data.data);
             setSelectedAnimal(animal);
             setVisible(true);
@@ -371,16 +373,16 @@ const AnimalManagement = () => {
                                     </CTableRow>
                                 </CTableHead>
                                 <CTableBody>
-                                    {species.map((animal, index) => (
+                                    {species?.map((animal, index) => (
                                         <CTableRow key={index}>
                                             <CTableHeaderCell scope="row">{index + 1}</CTableHeaderCell>
-                                            <CTableDataCell style={{ fontSize: '0.870rem' }}>{animal.specieName}</CTableDataCell>
-                                            <CTableDataCell style={{ fontSize: '0.870rem' }}>{animal.specieImage.length || 0}</CTableDataCell>
+                                            <CTableDataCell style={{ fontSize: '0.870rem' }}>{animal?.spiceName}</CTableDataCell>
+                                            <CTableDataCell style={{ fontSize: '0.870rem' }}>{animal?.spiceImage?.length || 0}</CTableDataCell>
                                             <CTableDataCell className="text-center">
-                                                <img src={animal.specieImage} alt={animal.specieName} width="150" />
+                                                <img src={animal?.spiceImage} alt={animal?.spiceName} width="150" />
                                             </CTableDataCell>
                                             <CTableDataCell>
-                                                <CButton className="me-1 p-1" onClick={() => deleteSpecies(selectedAnimal._id, animal.specieID)}>
+                                                <CButton className="me-1 p-1" onClick={() => deleteSpecies(selectedAnimal?._id, animal?.specieID)}>
                                                     <FontAwesomeIcon icon={faTrash} style={{ color: "#fd2b2b" }} />
                                                 </CButton>
                                             </CTableDataCell>
